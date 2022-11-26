@@ -1,0 +1,5 @@
+# `ansible.builtin.script`, which means that is part of the Ansible builtin modules included in ansible-core. 
+The purpose of the module is to Runs a local script on a remote node after transferring it.
+Parameters:
+    `cmd` string - script name or path
+    `executable` string - executable name or path
