@@ -2,18 +2,18 @@
 - name: run Python script
   hosts: all
   tasks:
-    - name: run cars.py script
+    - name: run cars.py script   #will copy cars.py on the target node and execute it using python3
       ansible.builtin.script:
         executable: python3
         cmd: cars.py
-      register: cars_raw_output
+      register: cars_raw_output   #save the output in a raw format
     - name: print cars_raw_output
       ansible.builtin.debug:
         var: cars_raw_output
         verbosity: 2
-    - name: convert output to JSON
+    - name: convert output to JSON   #will convert it to JSON
       ansible.builtin.set_fact:
         cars_list: "{{ cars_raw_output.stdout | from_json }}"
-    - name: print cars_list
+    - name: print cars_list  #will display JSON on the screen
       ansible.builtin.debug:
         var: cars_list
